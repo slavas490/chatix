@@ -1,21 +1,78 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import ReactDOM from 'react-dom'
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );
-  }
+import { createStore, combineReducers, applyMiddleware } from 'redux'
+import { Provider } from 'react-redux'
+
+import createHistory from 'history/createBrowserHistory'
+import { Route, Switch, Redirect } from 'react-router'
+
+import { ConnectedRouter, routerReducer, routerMiddleware, push } from 'react-router-redux'
+
+import * as reducers from './reducers'
+import * as components from './components'
+import * as action from './actions/'
+
+import { Link } from 'react-router-dom'
+
+
+const history = createHistory()
+
+const middleware = routerMiddleware(history)
+
+const store = createStore(
+	combineReducers({
+		...reducers,
+		router: routerReducer
+	}),
+	applyMiddleware(middleware)
+)
+
+
+class App extends React.Component {
+	constructor(props){
+		super(props);
+
+		this.state = {
+			logined: false
+		}
+
+		store.subscribe(() => {
+			const _store = store.getState();
+
+			this.setState({
+				logined: _store.session.logined
+			})
+		});
+	}
+
+	render() {
+		const _store = store.getState();
+		console.log(_store)
+		return (
+			<Provider store={store}>
+				<ConnectedRouter history={history}>
+					<div>
+						{
+							this.state.logined ?
+								<components.Home />
+							:
+								<div>
+									<Switch>
+										<Route exact path="/" component={components.HomeLanding} />
+										<Route path="/signin" component={components.Signin} />
+										<Route path="/signup" component={components.Signup} />
+										<Route path="*" children={() => (
+											<Redirect to="/"/>
+										)}/>
+									</Switch>
+								</div>
+						}
+					</div>
+				</ConnectedRouter>
+			</Provider>
+		)
+	}
 }
 
-export default App;
+export default App

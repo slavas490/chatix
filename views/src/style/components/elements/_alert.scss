@@ -1,0 +1,13 @@
+.alert {
+    &.info {
+
+    }
+
+    &.error {
+        font-size: 0.9em;
+        border: 1px solid #ff3b00;
+        border-radius: 2px;
+        padding: 0.5em 0.7em;
+        background-color: #f9e1d9;
+    }
+}

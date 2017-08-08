@@ -1,0 +1,44 @@
+.container {
+    background-color: #688abd;
+    background-image: url('/images/overlay.png');
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+
+    form {
+        padding: 1em 1.5em;
+        background-color: #fff;
+        border-radius: 3px;
+        box-shadow: 0px 0px 5px rgba(41, 41, 41, 0.4);
+
+        .title {
+            text-align: center;
+            font-size: 0.9em;
+            margin: 0 0 2em 0;
+        }
+
+        label {
+            display: block;
+            margin: 0.1em 0 0.1em 0;
+        }
+
+        .form-control {
+            margin: 1em 0;
+        }
+
+        input[type="text"], input[type="password"] {
+            width: 15em;
+        }
+
+        .splink {
+            font-size: 0.8em;
+            display: block;
+            margin-top: 1em;
+        }
+
+        .alert {
+            width: calc(13.9em - 2px)
+        }
+    }
+}

@@ -1,8 +1,8 @@
 import express from 'express'
-import welcome from '../controllers/index'
+import user from '../controllers/user'
 
-var router = express.Router()
+const router = express.Router()
 
-router.get('/', welcome)
+router.use('/user', user)
 
 module.exports = router

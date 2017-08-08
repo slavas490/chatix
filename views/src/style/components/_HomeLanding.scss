@@ -1,0 +1,187 @@
+.strip {
+    color: #676767;
+    background-color: #fdfdfd;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    .title {
+        font-size: 3em;
+        margin:  1.5em 0 0 0;
+        font-weight: 100;
+    }
+
+    .info {
+        margin: 1em 0 4.5em 0;
+        font-size: 1.1em;
+    }
+}
+
+.header {
+    $info-offset-top: 9em;
+    $info-offset-bottom: 12em;
+
+    background-image: url("/images/overlay.png"), url("/images/bk3.png");
+    padding-bottom: $info-offset-bottom;
+    background-position: top left, center;
+    background-size: auto, cover;
+
+    .top-panel {
+        display: flex;
+        justify-content: flex-end;
+
+        a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 0.9em;
+
+            &:hover {
+                color: $a-hover-color;
+            }
+        }
+
+        .menu {
+            padding: 1.3em;
+            margin-right: 1em;
+            display: inline-block;
+
+            a:nth-child(n+2) {
+                margin-left: 1em;
+            }
+        }
+    }
+
+
+    .form {
+        color: #fff;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: $info-offset-top;
+
+        .title {
+            font-size: 4.5em;
+            letter-spacing: 0.1em;
+            font-weight: 100;
+            margin: 0;
+            text-shadow: 0 0 0.3em rgba(210, 210, 210, 0.3);
+        }
+
+        .info {
+            margin-top: -0.6em;
+            font-size: 1em;
+            text-shadow: 0 0 0.3em rgba(210, 210, 210, 0.3);
+        }
+
+        .enter {
+            display: flex;
+            flex-direction: column;
+            margin-top: 1.2em;
+
+            .signup {
+                display: flex;
+                align-content: space-between;
+                justify-content: center;
+
+                .hor {
+                    border-bottom: 1px solid rgba(255, 255, 255, 0.7);
+                    width: 1.2em;
+                    height: 0.5em;
+                }
+
+                .txt {
+                    font-size: 0.9em;
+                    padding: 0 0.4em;
+
+                    a {
+                        color: #fdfdfd;
+                        text-decoration: none;
+
+                        &:hover {
+                            color: $a-color;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.fordev {
+    background: url('/images/overlay.png'), linear-gradient(45deg, #6883b3, #535a88, #2e324c);
+    padding: 3.5em 0;
+    
+    > .info {
+        display: flex;
+        justify-content: space-around;
+        color: #fff;
+        font-weight: 100;
+
+        .box {
+
+            img {
+                width: 10em;
+            }
+            .div {
+                height: 5em;
+                border-left: 1px solid rgba(255, 255, 255, 0.5);
+                width: 0;
+                margin: 1em 0 1em 50%;
+            }
+            .title {
+                font-size: 1.7em;
+                text-align: center;
+            }
+            .info {
+                width: 10em;
+                margin-top: 1em;
+                text-align: center;
+            }
+        }
+    }
+
+    > .foot {
+        display: flex;
+        justify-content: center;
+        margin-top: 1em;
+    }
+}
+
+.footer {
+    background-color: #333333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 3em 0;
+
+    a {
+        text-decoration: none;
+        color: #fff;
+    }
+
+    .icons {
+        img {
+            width: 1.2em;
+            padding: 0 0.5em;
+        }
+    }
+
+    .info {
+        padding: 0;
+        list-style: none;
+        font-size: 0.8em;
+        font-weight: 100;
+        margin: 1em 0 0 0;
+
+        li {
+            color: #fff;
+            display: inline-block;
+
+            &:nth-child(n+2) {
+                margin-left: 1em;
+                padding-left: 1em;
+                border-left: 1px solid #9c9c9c;
+            }
+        }
+    }
+}
