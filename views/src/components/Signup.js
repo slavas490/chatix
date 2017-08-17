@@ -64,7 +64,7 @@ class Signin extends Component {
 
             fetch('/user/account/create', {
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
                 },
                 method: 'POST',
                 body: JSON.stringify({
@@ -72,7 +72,8 @@ class Signin extends Component {
                     lastName: form[1].value,
                     username: form[2].value,
                     pass: form[3].value
-                })
+                }),
+                credentials: "same-origin"
             })
             .then(out => out.json())
             .then(out => {

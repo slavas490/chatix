@@ -22,6 +22,24 @@ a {
 	}
 }
 
+.content {
+	width: 70rem;
+	display: block;
+	margin: auto;
+	padding: 1.2rem;
+}
+
+#root.homewr {
+	min-height: 100vh;
+	background-color: #688abd;
+    background-attachment: fixed;
+	background-image: url('/images/overlay.png');
+}
+
+.Home {
+	@import './components/_Home.scss';
+}
+
 .HomeLanding {
 	@import './components/_HomeLanding.scss';
 }

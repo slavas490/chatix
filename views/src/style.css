@@ -110,6 +110,196 @@ a {
   a:hover {
     color: #006dfd; }
 
+.content {
+  width: 70rem;
+  display: block;
+  margin: auto;
+  padding: 1.2rem; }
+
+#root.homewr {
+  min-height: 100vh;
+  background-color: #688abd;
+  background-attachment: fixed;
+  background-image: url("/images/overlay.png"); }
+
+.Home #push_container {
+  margin-top: calc(16em - 100vh); }
+
+.Home .container {
+  min-height: 100vh; }
+  .Home .container .menu {
+    background-color: #f1f1f1;
+    box-shadow: 0px 1px 3px 0 rgba(78, 78, 78, 0.5);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1; }
+    .Home .container .menu .content {
+      display: flex;
+      justify-content: flex-end;
+      padding: 0;
+      width: initial; }
+    .Home .container .menu ul {
+      margin: 0;
+      padding: 0; }
+      .Home .container .menu ul li {
+        display: inline-block; }
+        .Home .container .menu ul li a {
+          font-size: 0.9em;
+          padding: 0.9em 1em;
+          display: inline-block; }
+          .Home .container .menu ul li a:hover {
+            background-color: #00b8ff;
+            color: #fff; }
+  .Home .container .frame {
+    width: 100%;
+    position: fixed;
+    display: flex;
+    justify-content: center; }
+    .Home .container .frame .box {
+      width: 40rem;
+      background-color: #fbfbfb;
+      margin-top: 6.8rem;
+      border-radius: 2px;
+      box-shadow: 0 0 2px #424242; }
+      .Home .container .frame .box .head {
+        border-radius: 2px 2px 0 0;
+        display: flex;
+        justify-content: space-between;
+        background-color: #f1f1f1;
+        box-shadow: 0 1px 2px rgba(181, 181, 181, 0.5); }
+        .Home .container .frame .box .head .goback a {
+          height: calc(100% - 1em);
+          display: flex;
+          align-items: center;
+          text-decoration: none;
+          color: rgba(0, 0, 0, 0.3);
+          padding: 0.5em 1em;
+          opacity: 0.5; }
+          .Home .container .frame .box .head .goback a img {
+            width: 1em;
+            opacity: 0.5; }
+          .Home .container .frame .box .head .goback a:hover {
+            opacity: 1; }
+          .Home .container .frame .box .head .goback a:hover img {
+            opacity: 0.7; }
+        .Home .container .frame .box .head .goback .hvaSMS {
+          position: absolute;
+          margin: -1.8em 0 0 4em;
+          font-size: 0.7em;
+          background: rgba(255, 0, 0, 0.5);
+          padding: 0.2em;
+          color: white;
+          font-weight: bold;
+          border-radius: 20%; }
+        .Home .container .frame .box .head .title {
+          padding: 0.5em 1em; }
+      .Home .container .frame .box .seach input {
+        width: calc(100% - 1.4em - 2px);
+        border-radius: initial; }
+      .Home .container .frame .box .list {
+        padding: 0;
+        margin: 0;
+        list-style: none; }
+        .Home .container .frame .box .list .msg {
+          text-align: center;
+          padding: 1em;
+          color: #ababab; }
+        .Home .container .frame .box .list .user {
+          display: flex;
+          justify-content: space-between; }
+          .Home .container .frame .box .list .user a {
+            color: #000;
+            display: block;
+            padding: 0.3em; }
+            .Home .container .frame .box .list .user a .ava {
+              width: 3em;
+              border: 2px;
+              margin-left: 1em; }
+            .Home .container .frame .box .list .user a .name {
+              position: relative;
+              top: -1em;
+              left: 1em; }
+              .Home .container .frame .box .list .user a .name .nick {
+                font-size: 0.9em;
+                color: #969696;
+                margin-left: 1em; }
+            .Home .container .frame .box .list .user a:last {
+              border-radius: 0 0 2px 2px; }
+          .Home .container .frame .box .list .user.nsms {
+            background: rgba(0, 149, 255, 0.2); }
+          .Home .container .frame .box .list .user:hover {
+            background-color: rgba(100, 133, 183, 0.3); }
+          .Home .container .frame .box .list .user .addFriend {
+            cursor: pointer;
+            padding: 1.3em 1.5em; }
+            .Home .container .frame .box .list .user .addFriend:hover {
+              background-color: rgba(0, 161, 255, 0.1); }
+      .Home .container .frame .box .chatBox .ovf {
+        height: calc(100vh - 16em);
+        overflow: hidden; }
+      .Home .container .frame .box .chatBox ul {
+        padding: 0;
+        margin: 0;
+        list-style: none; }
+        .Home .container .frame .box .chatBox ul li {
+          padding: 1em;
+          display: flex;
+          flex-direction: row; }
+        .Home .container .frame .box .chatBox ul .avatar {
+          width: 3em;
+          min-width: 3em;
+          height: 3em;
+          background-size: cover;
+          border-radius: 3px; }
+        .Home .container .frame .box .chatBox ul .name {
+          margin-left: 1em;
+          font-weight: bold; }
+        .Home .container .frame .box .chatBox ul .sms {
+          margin-left: 1em;
+          margin-top: 0.8em;
+          font-size: 0.9em; }
+        .Home .container .frame .box .chatBox ul .msms {
+          text-align: right;
+          flex-direction: row-reverse; }
+          .Home .container .frame .box .chatBox ul .msms .name {
+            margin: 0 1em 0 0; }
+          .Home .container .frame .box .chatBox ul .msms .sms {
+            margin: 0.8em 1em 0 0; }
+      .Home .container .frame .box .chatBox form {
+        display: flex; }
+        .Home .container .frame .box .chatBox form textarea {
+          flex-grow: 1;
+          padding: 1em;
+          border: 1px solid;
+          border-color: #e0e0e0 transparent transparent transparent;
+          resize: none;
+          height: 4em; }
+          .Home .container .frame .box .chatBox form textarea:focus {
+            border-color: #3eafff transparent transparent transparent;
+            outline: none; }
+        .Home .container .frame .box .chatBox form .send {
+          width: 3em;
+          position: relative;
+          cursor: pointer;
+          border: 1px solid;
+          border-color: #e0e0e0 transparent transparent #e0e0e0; }
+          .Home .container .frame .box .chatBox form .send:hover::after {
+            opacity: 0.7; }
+          .Home .container .frame .box .chatBox form .send::after {
+            content: "";
+            background: url(/images/icons/goback.png);
+            background-repeat: no-repeat;
+            background-position: 50%;
+            opacity: 0.4;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            position: absolute;
+            transform: rotateZ(180deg); }
+
 .HomeLanding .strip {
   color: #676767;
   background-color: #fdfdfd;

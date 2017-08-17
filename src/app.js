@@ -1,4 +1,3 @@
-"use strict"
 import express from 'express'
 import path from 'path'
 import favicon from 'serve-favicon'
@@ -6,9 +5,11 @@ import logger from 'morgan'
 import cookieParser from 'cookie-parser'
 import bodyParser from 'body-parser'
 import cors from 'cors'
+import session from 'express-session'
 import babelEnvLogger from './utils/env-logger'
 import routes from './routes/index'
 import db from './utils/db'
+import socket from './utils/socket'
 
 /* This function is just a helper to let you know how is the server running without inspecting npm scripts. */
 /* If it bothers, you can delete it right now. */
@@ -28,6 +29,18 @@ app.set('view engine', 'jade')
 /* Morgan logger */
 app.use(logger('dev'))
 
+/* Sessions */
+const sessionStorage = new session.MemoryStore();
+app.use(session({
+    store: sessionStorage,
+    secret : 'keyboard cat',
+    cookie : {
+      maxAge : null
+    },
+    saveUninitialized: true,
+    resave: true
+}))
+
 /* Body parsing */
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({
@@ -40,6 +53,9 @@ app.use(cookieParser())
 //   "preflightContinue": false,
 //   "optionsSuccessStatus": 204
 // }))
+
+/* Socket.IO */
+app.bindSocketIO = (socketio) => new socket(socketio, sessionStorage);
 
 /* Statinc serving */
 app.use(express.static(path.join(__dirname, '../public')))

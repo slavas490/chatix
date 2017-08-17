@@ -5,6 +5,7 @@
 var app = require('../app')
 var debug = require('debug')('es6:server')
 var http = require('http')
+var socketio = require("socket.io")
 
 /**
  * Normalize a port into a number, string, or false.
@@ -87,3 +88,10 @@ var server = http.createServer(app)
 server.listen(port)
 server.on('error', onError)
 server.on('listening', onListening)
+
+/*
+ * Additional
+ */
+
+const socket = socketio(server)
+app.bindSocketIO(socket)

@@ -11,7 +11,7 @@ import { ConnectedRouter, routerReducer, routerMiddleware, push } from 'react-ro
 
 import * as reducers from './reducers'
 import * as components from './components'
-import * as action from './actions/'
+import * as actions from './actions/'
 
 import { Link } from 'react-router-dom'
 
@@ -34,7 +34,8 @@ class App extends React.Component {
 		super(props);
 
 		this.state = {
-			logined: false
+			logined: true,
+			_isLoaded: false
 		}
 
 		store.subscribe(() => {
@@ -42,7 +43,21 @@ class App extends React.Component {
 
 			this.setState({
 				logined: _store.session.logined
-			})
+			});
+		});
+	}
+
+	componentWillMount () {
+		fetch('/user/session/restore', {
+			method: 'POST',
+			credentials: "same-origin"
+		})
+		.then(out => out.json())
+		.then(out => {
+			if(!out.code){
+				store.dispatch(actions.session.login());
+			}
+			this.setState({ _isLoaded: true });
 		});
 	}
 
@@ -50,27 +65,31 @@ class App extends React.Component {
 		const _store = store.getState();
 		console.log(_store)
 		return (
-			<Provider store={store}>
-				<ConnectedRouter history={history}>
-					<div>
-						{
-							this.state.logined ?
-								<components.Home />
-							:
-								<div>
+			<div style={{display: (this.state._isLoaded?'block':'none')}}>
+				<Provider store={store}>
+					<ConnectedRouter history={history}>
+						<div>
+							{ this.state._isLoaded && (
+								this.state.logined ?
 									<Switch>
-										<Route exact path="/" component={components.HomeLanding} />
-										<Route path="/signin" component={components.Signin} />
-										<Route path="/signup" component={components.Signup} />
-										<Route path="*" children={() => (
-											<Redirect to="/"/>
-										)}/>
+										<Route component={components.Home} />
 									</Switch>
-								</div>
-						}
-					</div>
-				</ConnectedRouter>
-			</Provider>
+								:
+									<div>
+										<Switch>
+											<Route exact path="/" component={components.HomeLanding} />
+											<Route path="/signin" component={components.Signin} />
+											<Route path="/signup" component={components.Signup} />
+											<Route path="*" children={() => (
+												<Redirect to="/"/>
+											)}/>
+										</Switch>
+									</div>
+							)}
+						</div>
+					</ConnectedRouter>
+				</Provider>
+			</div>
 		)
 	}
 }
